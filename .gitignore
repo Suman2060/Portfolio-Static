@@ -1,6 +1,6 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# See https://git-scm.com/docs/gitignore for pattern syntax and precedence.
 
-# dependencies
+# Dependencies are restored from the package manifest and lockfile.
 /node_modules
 /.pnp
 .pnp.*
@@ -10,32 +10,41 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
+# Test output and local coverage reports.
 /coverage
 
-# next.js
+# Next.js build output and static export output.
 /.next/
 /out/
 
-# production
+# Other build directories produced by tools or deployment adapters.
 /build
+/.turbo
 
-# misc
+# Operating-system and editor metadata.
 .DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Local certificates and private keys must never be committed.
 *.pem
 
-# debug
+# Logs and local debug output.
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# Environment files may contain API keys and deployment credentials.
 .env*
 
-# vercel
+# Vercel deployment metadata.
 .vercel
 
-# typescript
+# TypeScript and ESLint caches are generated locally.
 *.tsbuildinfo
+.eslintcache
 next-env.d.ts

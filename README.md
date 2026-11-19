@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Suman Dangol — Developer Portfolio
+
+A modern, responsive developer portfolio built with Next.js, React, TypeScript, and Tailwind CSS. The site presents professional experience, technical skills, contact details, and a curated selection of public GitHub projects.
+
+## Features
+
+- Responsive portfolio layout with dark and light themes.
+- Hero section with profile information and calls to action.
+- GitHub profile integration using the GitHub REST API.
+- Project search and sorting by update date, stars, or name.
+- Project cards with repository links, languages, topics, stars, forks, and previews.
+- GitHub project allowlist so only selected work is displayed.
+- Skills, experience, contact, and social sections.
+- Local GitHub response caching to reduce repeated API requests.
+- Static data store with no application database or backend service.
+
+## Featured Projects
+
+The project section currently displays only these repositories:
+
+1. **Buying and rental ecommerce**
+2. **Travel Operator**
+3. **Inventory Management**
+4. **Asterid Resolver**
+5. **Invoice detail Extraction**
+
+The allowlist and repository-name aliases are maintained in [`app/utils/github.ts`](./app/utils/github.ts).
+
+## Technology
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS 4
+- ESLint
+- GitHub REST API
 
 ## Getting Started
 
-First, run the development server:
+### Requirements
+
+- Node.js 20 or newer
+- npm or pnpm
+
+### Installation
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+pnpm dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open [http://localhost:3000](http://localhost:3000) in a browser.
 
-## Learn More
+### Validation
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+pnpm lint
+pnpm build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Production
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+pnpm start
+```
 
-## Deploy on Vercel
+## Configuration
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The default GitHub account is `Suman2060`. To use another account, create a local environment file:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```env
+NEXT_PUBLIC_GITHUB_USERNAME=your-github-username
+```
+
+Environment files are ignored by Git because they may contain private configuration or credentials.
+
+## Project Structure
+
+```text
+app/
+├── components/       # Page sections and reusable UI components
+├── hooks/            # Client-side data hooks
+├── store/            # Static portfolio content
+├── types/            # TypeScript interfaces
+├── utils/            # GitHub integration and shared helpers
+├── globals.css       # Theme and component styles
+├── layout.tsx        # Root layout and metadata
+└── page.tsx          # Main portfolio page
+```
+
+## Updating Portfolio Content
+
+- Edit personal information, skills, experience, and social links in [`app/store/siteStore.ts`](./app/store/siteStore.ts).
+- Update the displayed GitHub repositories in [`app/utils/github.ts`](./app/utils/github.ts).
+- Update global visual styles in [`app/globals.css`](./app/globals.css).
+- Run `pnpm lint` and `pnpm build` before publishing changes.
+
+## Deployment
+
+This project can be deployed to Vercel or any platform that supports Next.js:
+
+1. Push the repository to GitHub.
+2. Import the repository into the deployment platform.
+3. Add `NEXT_PUBLIC_GITHUB_USERNAME` if a GitHub account other than `Suman2060` is required.
+4. Deploy using the standard Next.js build command.
