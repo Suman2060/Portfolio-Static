@@ -184,25 +184,6 @@ export default function Skills({ skills }: { skills: Skill[] }) {
           </div>
         )}
 
-        <div className="mt-8 panel p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 border-brand/20">
-          <div className="flex items-center gap-3">
-            <span className="text-xl p-2 rounded-lg bg-brand/10 text-brand border border-brand/20">
-              ⚡
-            </span>
-            <div>
-              <h4 className="text-sm font-bold text-ink">Engineering Standard</h4>
-              <p className="text-xs text-mid mt-0.5">
-                Strict TypeScript · Clean REST contracts · Relational integrity · Containerized deployments
-              </p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="file-chip text-xs">Zero Bloat</span>
-            <span className="file-chip text-xs text-emerald-400 border-emerald-500/30">
-              100% Type-Safe
-            </span>
-          </div>
-        </div>
       </div>
     </section>
   );
