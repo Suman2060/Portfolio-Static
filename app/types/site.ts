@@ -121,7 +121,7 @@ export const DEFAULT_SITE: SiteSettings = {
     metricsLabel: 'By the Numbers',
     metrics: [
       { value: '__projects__', label: 'Projects Shipped' },
-      { value: '2+', label: 'Years Experience' },
+      { value: '1+', label: 'Years Experience' },
       { value: '100%', label: 'TypeScript' },
       { value: '__experience__', label: 'Companies' },
     ],
@@ -146,14 +146,14 @@ export const DEFAULT_SITE: SiteSettings = {
     footerFrame: 'Available for new opportunities',
   },
   socials: {
-    email: 'sumandangol@example.com',
+    email: 'sumandangol2060@gmail.com.com',
     github: 'https://github.com/Suman2060',
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/suman-dangol-9310b6306/',
     twitter: '',
   },
   footer: {
     tagline: 'Available for full-time full-stack engineering roles.',
-    email: 'sumandangol@example.com',
+    email: 'sumandangol2060@gmail.com.co',
     copyrightName: 'Suman Dangol',
     madeWith: 'Engineered with React 19, TypeScript & Tailwind CSS',
   },

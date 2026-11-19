@@ -9,8 +9,7 @@ import { githubProfileUrl } from '../../utils/github';
 const ROLES = [
   'Full-Stack Developer',
   'Node.js & React Architect',
-  'PostgreSQL & API Engineer',
-  'Cloud & DevOps Enthusiast',
+  'PostgreSQL & API Developer',
 ];
 
 export default function Hero({ github }: { github: GitHubState }) {
@@ -96,7 +95,7 @@ export default function Hero({ github }: { github: GitHubState }) {
             {/* Quick Tech Highlights */}
             <div className="mt-6 flex flex-wrap items-center gap-2">
               <span className="text-xs font-mono text-faint uppercase mr-1">Core Stack:</span>
-              {['TypeScript', 'React', 'Node.js', 'Express', 'PostgreSQL', 'Prisma', 'Tailwind', 'Docker'].map((tech) => (
+              {['TypeScript', 'React', 'Node.js', 'Express', 'PostgreSQL', 'Prisma', 'Tailwind'].map((tech) => (
                 <span key={tech} className="file-chip text-[11px] py-1 px-2.5">
                   {tech}
                 </span>
@@ -153,7 +152,7 @@ export default function Hero({ github }: { github: GitHubState }) {
                 </div>
                 <div className="pl-4">
                   <span className="text-slate-400">expertise:</span> [
-                  <span className="text-amber-300">&#39;Frontend&#39;</span>, <span className="text-amber-300">&#39;Backend&#39;</span>, <span className="text-amber-300">&#39;DBs&#39;</span>, <span className="text-amber-300">&#39;DevOps&#39;</span>
+                  <span className="text-amber-300">&#39;Frontend&#39;</span>, <span className="text-amber-300">&#39;Backend&#39;</span>,
                   ],
                 </div>
                 <div className="pl-4">

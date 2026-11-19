@@ -60,6 +60,7 @@ const STATIC_SITE: SiteSettings = {
     github: 'https://github.com/Suman2060',
     linkedin: 'https://linkedin.com',
     twitter: '',
+    resumeUrl: '/cv/Suman_Resume.pdf?v=2',
   },
   footer: {
     tagline: 'Available for full-time full-stack engineering roles.',
