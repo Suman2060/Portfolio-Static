@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSite } from "../../store/siteStore";
 import DarkModeToggle from "../ui/DarkModeToggle";
@@ -27,21 +27,32 @@ export default function Header() {
   const githubUrl = githubProfileUrl(githubUsername);
   const resumeUrl = site.socials.resumeUrl || "/cv/Suman_Resume.pdf?v=2";
 
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMobileMenuOpen(false);
+    };
+
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [mobileMenuOpen]);
+
   return (
     <>
       <header
         className="border-b glass sticky top-0 z-50 transition-colors"
         style={{ borderColor: "var(--hairline)" }}
       >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-3 h-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-2 h-16">
         {/* Brand Logo */}
         <div className="flex items-center gap-8">
           <Link
             href="/"
-            className="flex items-center gap-2.5 font-display font-bold uppercase tracking-tight text-lg group"
+            className="flex items-center gap-2.5 font-display font-bold uppercase tracking-tight text-base sm:text-lg group min-w-0"
           >
             <span className="w-3 h-3 bg-brand rounded-sm rotate-12 shadow-[0_0_10px_var(--brand)] group-hover:rotate-45 transition-transform duration-300" />
-            <span className="text-ink group-hover:text-brand transition-colors">
+            <span className="text-ink group-hover:text-brand transition-colors truncate max-w-[9rem] sm:max-w-none">
               {hero.name || "Suman Dangol"}
             </span>
           </Link>

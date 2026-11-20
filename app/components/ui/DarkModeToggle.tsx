@@ -34,7 +34,9 @@ export default function DarkModeToggle() {
   return (
     <button
       onClick={toggle}
-      className="file-chip cursor-pointer"
+      className="file-chip dark-mode-toggle cursor-pointer"
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+      aria-pressed={isDark}
       title={isDark ? 'Switch to light' : 'Switch to dark'}
     >
       {isDark ? '◐ light' : '◐ dark'}

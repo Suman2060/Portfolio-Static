@@ -100,6 +100,19 @@ body {
   overflow-x: hidden;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
 /* Subtle dev cyber background grid overlay */
 body::before {
   content: "";
@@ -1047,6 +1060,157 @@ textarea.field {
   border-radius: 14px;
   pointer-events: none;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+[id] {
+  scroll-margin-top: 72px;
+}
+
+@media (max-width: 639px) {
+  .max-w-6xl,
+  .max-w-7xl {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  section > .max-w-6xl,
+  section > .max-w-7xl,
+  footer > .max-w-6xl {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+
+  .btn {
+    min-height: 44px;
+  }
+
+  .hero-eyebrow {
+    font-size: 13px;
+  }
+
+  section.relative.overflow-hidden .max-w-6xl.mx-auto > .grid {
+    gap: 32px;
+  }
+
+  h1 {
+    font-size: clamp(2.25rem, 12vw, 3.25rem) !important;
+    line-height: 0.98;
+    overflow-wrap: anywhere;
+  }
+
+  .terminal-header {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .terminal-header > span:last-child {
+    display: none;
+  }
+
+  .terminal-window > div:last-child {
+    font-size: 11px;
+  }
+
+  .gh-card {
+    padding: 14px;
+  }
+
+  .hero-next-step {
+    width: 100%;
+  }
+
+  .work-toolbar {
+    padding: 12px;
+  }
+
+  .work-toolbar > .flex,
+  .work-toolbar .select,
+  .work-toolbar .search-box {
+    width: 100%;
+  }
+
+  .work-toolbar > .flex {
+    justify-content: space-between;
+  }
+
+  .project-card__body {
+    padding: 16px;
+  }
+
+  .project-card__actions {
+    flex-direction: column;
+  }
+
+  .project-card__actions .btn {
+    width: 100%;
+  }
+
+  .skill-filter {
+    min-height: 38px;
+  }
+
+  .skill-group {
+    padding: 16px;
+  }
+
+  .skill-group__head p {
+    max-width: 16rem;
+  }
+
+  .skill-pill {
+    min-height: 36px;
+  }
+
+  .panel {
+    max-width: 100%;
+  }
+
+  footer .btn,
+  #contact .btn {
+    width: 100%;
+  }
+
+  footer .grid {
+    gap: 32px;
+  }
+
+  .mobile-menu-enter {
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .dark-mode-toggle {
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+    padding: 0;
+    font-size: 0;
+  }
+
+  .dark-mode-toggle::before {
+    content: "◐";
+    font-size: 16px;
+  }
+
+  header > div:first-of-type {
+    gap: 6px;
+  }
+
+  .hero-next-step small {
+    max-width: 12rem;
+  }
+
+  .work-toolbar > .flex {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .skill-filter {
+    flex: 1 1 calc(50% - 4px);
+    justify-content: center;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
