@@ -33,9 +33,18 @@ export default function Header() {
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") setMobileMenuOpen(false);
     };
+    const closeOnDesktop = () => {
+      if (window.matchMedia("(min-width: 1024px)").matches) {
+        setMobileMenuOpen(false);
+      }
+    };
 
     window.addEventListener("keydown", closeOnEscape);
-    return () => window.removeEventListener("keydown", closeOnEscape);
+    window.addEventListener("resize", closeOnDesktop);
+    return () => {
+      window.removeEventListener("keydown", closeOnEscape);
+      window.removeEventListener("resize", closeOnDesktop);
+    };
   }, [mobileMenuOpen]);
 
   return (
@@ -44,12 +53,12 @@ export default function Header() {
         className="border-b glass sticky top-0 z-50 transition-colors"
         style={{ borderColor: "var(--hairline)" }}
       >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-2 h-16">
+      <div className="navbar-inner max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-2 h-16">
         {/* Brand Logo */}
-        <div className="flex items-center gap-8">
+        <div className="navbar-brand flex items-center min-w-0 gap-8">
           <Link
             href="/"
-            className="flex items-center gap-2.5 font-display font-bold uppercase tracking-tight text-base sm:text-lg group min-w-0"
+            className="navbar-logo flex items-center gap-2.5 font-display font-bold uppercase tracking-tight text-base sm:text-lg group min-w-0"
           >
             <span className="w-3 h-3 bg-brand rounded-sm rotate-12 shadow-[0_0_10px_var(--brand)] group-hover:rotate-45 transition-transform duration-300" />
             <span className="text-ink group-hover:text-brand transition-colors truncate max-w-[9rem] sm:max-w-none">
@@ -72,7 +81,7 @@ export default function Header() {
         </div>
 
         {/* Right Action Icons */}
-        <div className="flex items-center gap-2.5">
+        <div className="navbar-actions flex items-center shrink-0 gap-2.5">
           <a
             href={githubUrl}
             target="_blank"
@@ -84,14 +93,14 @@ export default function Header() {
           </a>
           <a
             href="#contact"
-            className="hidden md:inline-flex btn btn-brand text-xs py-2 px-3.5"
+            className="navbar-hire hidden md:inline-flex btn btn-brand text-xs py-2 px-3.5"
           >
             Hire Me ↗
           </a>
 
           <a
             href={resumeUrl}
-            className="hidden sm:inline-flex btn btn-brand text-xs py-2 px-3.5"
+            className="navbar-cv hidden sm:inline-flex btn btn-brand text-xs py-2 px-3.5"
             type="application/pdf"
           >
             View CV
@@ -99,7 +108,7 @@ export default function Header() {
           <a
             href={resumeUrl}
             download="Suman_Dangol_CV.pdf"
-            className="hidden sm:inline-flex btn btn-ghost text-xs py-2 px-3"
+            className="navbar-download hidden sm:inline-flex btn btn-ghost text-xs py-2 px-3"
             title="Download CV"
             aria-label="Download CV"
             type="application/pdf"
@@ -123,9 +132,10 @@ export default function Header() {
           {/* Mobile Hamburger Button */}
           <button
             onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className="lg:hidden p-2 text-ink hover:text-brand focus:outline-none"
+            className="navbar-menu-button lg:hidden p-2 text-ink hover:text-brand focus:outline-none"
             aria-label="Toggle Navigation Menu"
             aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
           >
             {mobileMenuOpen ? (
               <svg
@@ -162,13 +172,13 @@ export default function Header() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden glass border-b border-hairline px-4 sm:px-6 py-4 space-y-3 mobile-menu-enter">
+        <div id="mobile-navigation" className="lg:hidden glass border-b border-hairline px-4 sm:px-6 py-4 space-y-1 mobile-menu-enter">
           {NAV_LINKS.map(({ href, label }) => (
             <a
               key={href}
               href={href}
               onClick={() => setMobileMenuOpen(false)}
-              className="block py-2 text-sm font-medium text-ink hover:text-brand transition-colors"
+              className="block min-h-11 px-2 flex items-center text-sm font-medium text-ink hover:text-brand transition-colors"
             >
               {label}
             </a>
@@ -178,7 +188,7 @@ export default function Header() {
             target="_blank"
             rel="noreferrer"
             onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-sm font-medium text-ink hover:text-brand transition-colors"
+            className="block min-h-11 px-2 flex items-center text-sm font-medium text-ink hover:text-brand transition-colors"
           >
             GitHub ↗
           </a>
