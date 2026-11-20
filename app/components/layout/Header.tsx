@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { useSite } from "../../store/siteStore";
+import CvModal from "../ui/CvModal";
 import DarkModeToggle from "../ui/DarkModeToggle";
 import {
   DEFAULT_GITHUB_USERNAME,
@@ -22,6 +23,12 @@ export default function Header() {
   const { site } = useSite();
   const hero = site.hero;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [cvOpen, setCvOpen] = useState(false);
+  const closeCv = useCallback(() => setCvOpen(false), []);
+  const openCv = useCallback(() => {
+    setMobileMenuOpen(false);
+    setCvOpen(true);
+  }, []);
   const githubUsername =
     extractGithubUsername(site.socials.github) || DEFAULT_GITHUB_USERNAME;
   const githubUrl = githubProfileUrl(githubUsername);
@@ -98,13 +105,14 @@ export default function Header() {
             Hire Me ↗
           </a>
 
-          <a
-            href={resumeUrl}
+          <button
+            type="button"
+            onClick={openCv}
             className="navbar-cv hidden sm:inline-flex btn btn-brand text-xs py-2 px-3.5"
-            type="application/pdf"
+            aria-haspopup="dialog"
           >
             View CV
-          </a>
+          </button>
           <a
             href={resumeUrl}
             download="Suman_Dangol_CV.pdf"
@@ -199,14 +207,14 @@ export default function Header() {
           >
             Start a conversation <span className="arrow">↗</span>
           </a>
-          <a
-            href={resumeUrl}
-            onClick={() => setMobileMenuOpen(false)}
+          <button
+            type="button"
+            onClick={openCv}
             className="btn btn-brand w-full mt-2 justify-center"
-            type="application/pdf"
+            aria-haspopup="dialog"
           >
             View CV
-          </a>
+          </button>
           <a
             href={resumeUrl}
             download="Suman_Dangol_CV.pdf"
@@ -219,6 +227,13 @@ export default function Header() {
         </div>
       )}
       </header>
+
+      <CvModal
+        open={cvOpen}
+        onClose={closeCv}
+        src={resumeUrl}
+        fileName="Suman_Dangol_CV.pdf"
+      />
     </>
   );
 }
