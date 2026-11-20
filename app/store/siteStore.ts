@@ -56,7 +56,7 @@ const STATIC_EXPERIENCE: Experience[] = [
 const STATIC_SITE: SiteSettings = {
   ...DEFAULT_SITE,
   socials: {
-    email: 'sumandangol@example.com',
+    email: 'sumandangol2060@gmail.com',
     github: 'https://github.com/Suman2060',
     linkedin: 'https://linkedin.com',
     twitter: '',
@@ -64,7 +64,7 @@ const STATIC_SITE: SiteSettings = {
   },
   footer: {
     tagline: 'Available for full-time full-stack engineering roles.',
-    email: 'sumandangol@example.com',
+    email: 'sumandangol2060@gmail.com',
     copyrightName: 'Suman Dangol',
     madeWith: 'Engineered with Next.js, TypeScript & Tailwind CSS',
   },
